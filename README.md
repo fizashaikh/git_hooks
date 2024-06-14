@@ -11,17 +11,19 @@ Repository to store some git hooks.
 
 1. Enable git templates:
     ```
-    git config --global init.templatedir '~/git_hooks'
+    git config --global core.hooksPath '~/git_hooks'
     ```
 
-    This tells git to copy everything in `~/git-hooks` to your per-project `.git/` directory when you run `git init`
+    By default Git will look for your hooks in the `$GIT_DIR/hooks` directory. Set this to different path, e.g. `~/git-hooks/', and Git will try to find your hooks in that directory, e.g. `~/git-hooks/prepare-commit-msg` instead of in `$GIT_DIR/hooks/prepare-commit-msg`.
 
 2. Write your hooks in `~/.git-hooks/`
 
 3. Make sure the hook is executable.
     ```
-    chmod a+x ~/.git-templates/hooks/prepare-commit-msg
+    chmod a+x ~/git-hooks/prepare-commit-msg
     ```
+
+Point 4 may not be needed anymore
 
 4. Re-initialize git in each existing repo you'd like to use this in:
     ```
